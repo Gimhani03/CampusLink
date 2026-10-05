@@ -1,0 +1,352 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ─── CampusLink — University Event Platform ─────────────────────────────────
+ *
+ * Aesthetic: Clean Campus Portal
+ * Light, trustworthy, academic — inspired by NSBM Green University.
+ *
+ * Typography: Source Serif 4 (headings) + DM Sans (UI)
+ * Primary:     Forest green (#0d6b4a)
+ * Secondary:   Navy (#1e3a5f) for admin / emphasis
+ * Background:  Soft off-white with subtle green tint
+ * ─────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ── Fonts ─────────────────────────────────────────────────────────────── */
+  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Ink (background) palette ──────────────────────────────────────────── */
+  --color-ink-950: #04040f;
+  --color-ink-900: #07071a;
+  --color-ink-800: #0d0d24;
+  --color-ink-700: #13132e;
+  --color-ink-600: #1a1a3a;
+  --color-ink-500: #232348;
+  --color-ink-400: #2e2e5c;
+  --color-ink-300: #3d3d72;
+
+  /* ── Text ───────────────────────────────────────────────────────────────── */
+  --color-text-primary: #eeeeff;
+  --color-text-secondary: #a0a0c8;
+  --color-text-muted: #5c5c88;
+  --color-text-dim: #3a3a5c;
+
+  /* ── Border ─────────────────────────────────────────────────────────────── */
+  --color-border-subtle: rgba(255, 255, 255, 0.055);
+  --color-border-default: rgba(255, 255, 255, 0.09);
+  --color-border-strong: rgba(255, 255, 255, 0.15);
+
+  /* ── Violet (primary actions) ───────────────────────────────────────────── */
+  --color-violet-950: #1e1248;
+  --color-violet-900: #2d1b69;
+  --color-violet-800: #3d2496;
+  --color-violet-700: #5229c8;
+  --color-violet-600: #6d3beb;
+  --color-violet-500: #7c5af5;
+  --color-violet-400: #9b82f8;
+  --color-violet-300: #bba8fb;
+  --color-violet-200: #d9d0fd;
+  --color-violet-100: #ede8fe;
+
+  /* ── Rose (events / energy) ─────────────────────────────────────────────── */
+  --color-rose-500: #f5607a;
+  --color-rose-400: #f87a90;
+  --color-rose-300: #fba8b5;
+  --color-rose-100: #fee2e6;
+
+  /* ── Amber (trending / featured) ────────────────────────────────────────── */
+  --color-amber-500: #f59e0b;
+  --color-amber-400: #fbbf24;
+  --color-amber-300: #fcd34d;
+  --color-amber-100: #fef3c7;
+
+  /* ── Coral (deadlines / urgency) ────────────────────────────────────────── */
+  --color-coral-500: #f87171;
+  --color-coral-400: #fb9a9a;
+  --color-coral-100: #fee2e2;
+
+  /* ── Teal (channels / follow) ───────────────────────────────────────────── */
+  --color-teal-500: #14d9c4;
+  --color-teal-400: #3ee8d6;
+  --color-teal-100: #ccfbf1;
+
+  /* ── Sky (academic / info) ──────────────────────────────────────────────── */
+  --color-sky-500: #38bdf8;
+  --color-sky-400: #7dd3fc;
+  --color-sky-100: #e0f2fe;
+
+  /* ── Emerald (success / sports) ─────────────────────────────────────────── */
+  --color-emerald-500: #10b981;
+  --color-emerald-400: #34d399;
+  --color-emerald-100: #d1fae5;
+
+  /* ── Radius ──────────────────────────────────────────────────────────────── */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
+  --radius-2xl: 1.5rem;
+  --radius-full: 9999px;
+}
+
+/* ─── Base resets ────────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+  line-height: 1.6;
+}
+
+/* ─── Custom scrollbar ───────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #b8c9c0;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a89e;
+}
+
+/* ─── Custom selection ───────────────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(13, 107, 74, 0.2);
+  color: inherit;
+}
+
+/* ─── Utility: hide scrollbar but keep scrolling ────────────────────────────── */
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Category color map (CSS vars for JS consumption) ──────────────────────── */
+
+:root {
+  --cat-academic:    #2563eb;
+  --cat-cultural:    #9333ea;
+  --cat-sports:      #059669;
+  --cat-technology:  #0284c7;
+  --cat-career:      #ea580c;
+  --cat-social:      #db2777;
+  --cat-religious:   #ca8a04;
+  --cat-competition: #dc2626;
+  --cat-other:       #64748b;
+
+  /* Campus portal palette */
+  --background: #f4f7f5;
+  --foreground: #1a2e28;
+  --card: #ffffff;
+  --card-foreground: #1a2e28;
+  --popover: #ffffff;
+  --popover-foreground: #1a2e28;
+  --primary: #0d6b4a;
+  --primary-foreground: #ffffff;
+  --secondary: #e8f0ec;
+  --secondary-foreground: #1a3d32;
+  --muted: #eef2f0;
+  --muted-foreground: #5c6b65;
+  --accent: #e3f0ea;
+  --accent-foreground: #0d5c40;
+  --destructive: #c0392b;
+  --destructive-foreground: #ffffff;
+  --border: #d4ddd8;
+  --input: #c5d4cc;
+  --ring: #0d6b4a;
+  --chart-1: #0d6b4a;
+  --chart-2: #1e3a5f;
+  --chart-3: #059669;
+  --chart-4: #ca8a04;
+  --chart-5: #0284c7;
+  --radius: 0.625rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a2e28;
+  --sidebar-primary: #0d6b4a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e8f5f0;
+  --sidebar-accent-foreground: #0d5c40;
+  --sidebar-border: #d4ddd8;
+  --sidebar-ring: #0d6b4a;
+}
+
+/* ─── Glow utilities ─────────────────────────────────────────────────────────── */
+
+.glow-violet {
+  box-shadow: 0 0 20px rgba(124, 90, 245, 0.25), 0 0 40px rgba(124, 90, 245, 0.1);
+}
+
+.glow-rose {
+  box-shadow: 0 0 20px rgba(245, 96, 122, 0.25), 0 0 40px rgba(245, 96, 122, 0.1);
+}
+
+.glow-amber {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+}
+
+/* ─── Gradient border card ───────────────────────────────────────────────────── */
+
+.card-border {
+  /* kept for compatibility — plain card styling in light mode */
+}
+
+.mesh-bg {
+  background:
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgba(13, 107, 74, 0.05) 0%, transparent 55%),
+    var(--background);
+}
+
+.auth-bg {
+  background:
+    radial-gradient(ellipse 80% 60% at 100% 0%, rgba(13, 107, 74, 0.06) 0%, transparent 55%),
+    linear-gradient(165deg, #eef5f1 0%, #f4f7f5 45%, #f8faf9 100%);
+}
+
+.admin-bg {
+  background: linear-gradient(165deg, #eef2f7 0%, #f4f6f8 50%, #f8fafb 100%);
+  --admin-accent: #1e3a5f;
+  --admin-accent-foreground: #334155;
+  --admin-accent-soft: #e8edf3;
+}
+
+/* ─── Line clamp utilities ───────────────────────────────────────────────────── */
+
+.line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; }
+.line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+@theme inline {
+  --font-heading: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+.dark {
+  --background: #1a2e28;
+  --foreground: #eef2f0;
+  --card: #243832;
+  --card-foreground: #eef2f0;
+  --popover: #243832;
+  --popover-foreground: #eef2f0;
+  --primary: #2d9a72;
+  --primary-foreground: #ffffff;
+  --secondary: #2a4038;
+  --secondary-foreground: #eef2f0;
+  --muted: #2a4038;
+  --muted-foreground: #94a89e;
+  --accent: rgba(45, 154, 114, 0.15);
+  --accent-foreground: #a7dcc4;
+  --destructive: #e57373;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.12);
+  --ring: #2d9a72;
+  --sidebar: #1e332c;
+  --sidebar-foreground: #eef2f0;
+  --sidebar-primary: #2d9a72;
+  --sidebar-accent: rgba(45, 154, 114, 0.15);
+  --sidebar-border: rgba(255, 255, 255, 0.1);
+  --sidebar-ring: #2d9a72;
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .event-section-title {
+    @apply font-display font-bold text-lg sm:text-xl tracking-tight text-foreground;
+  }
+
+  .event-section-subtitle {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .glass-nav {
+    @apply bg-card/95 backdrop-blur-md border-b border-border shadow-sm;
+  }
+
+  .glass-bar {
+    @apply bg-card/95 backdrop-blur-md border-border shadow-sm;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
+}
