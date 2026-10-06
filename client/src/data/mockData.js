@@ -1,0 +1,510 @@
+/**
+ * CampusLink mock data
+ *
+ * Realistic data for the Sri Lankan university event platform.
+ * Every field matches the backend Mongoose schemas exactly so
+ * swapping to real API calls requires only replacing these exports.
+ */
+
+// ─── Current student ─────────────────────────────────────────────────────────
+
+export const currentStudent = {
+  _id: "65f1a2b3c4d5e6f7a8b9c0d1",
+  fullName: "Gimhani Perera",
+  email: "gimhani.p@uoc.lk",
+  studentId: "STD/2022/CS/047",
+  degree: "BSc (Hons) Computer Science",
+  batch: "2022",
+  whatsappNumber: "+94 77 123 4567",
+  interests: ["technology", "competition", "career"],
+  role: "student",
+  profilePicture: {
+    url: "https://api.dicebear.com/7.x/notionists/svg?seed=Gimhani&backgroundColor=7c5af5",
+  },
+  followedChannels: ["ch1", "ch2", "ch4"],
+  savedEvents: ["ev2", "ev5", "ev8"],
+  stats: {
+    upcomingRegistrations: 3,
+    totalRegistrations: 12,
+    savedEvents: 3,
+    followedChannels: 3,
+  },
+};
+
+// ─── Category metadata ────────────────────────────────────────────────────────
+
+export const categoryMeta = {
+  academic:    { label: "Academic",    color: "#1d4ed8", bg: "rgba(29,78,216,0.1)",    badgeClassName: "bg-blue-50 text-blue-800 border-blue-200" },
+  cultural:    { label: "Cultural",    color: "#7c3aed", bg: "rgba(124,58,237,0.1)",    badgeClassName: "bg-purple-50 text-purple-800 border-purple-200" },
+  sports:      { label: "Sports",      color: "#047857", bg: "rgba(4,120,87,0.1)",      badgeClassName: "bg-emerald-50 text-emerald-800 border-emerald-200" },
+  technology:  { label: "Technology",  color: "#0369a1", bg: "rgba(3,105,161,0.1)",    badgeClassName: "bg-sky-50 text-sky-800 border-sky-200" },
+  career:      { label: "Career",      color: "#c2410c", bg: "rgba(194,65,12,0.1)",    badgeClassName: "bg-orange-50 text-orange-800 border-orange-200" },
+  social:      { label: "Social",      color: "#be185d", bg: "rgba(190,24,93,0.1)",    badgeClassName: "bg-pink-50 text-pink-800 border-pink-200" },
+  religious:   { label: "Religious",   color: "#6d28d9", bg: "rgba(109,40,217,0.1)",  badgeClassName: "bg-violet-50 text-violet-800 border-violet-200" },
+  competition: { label: "Competition", color: "#b91c1c", bg: "rgba(185,28,28,0.1)",   badgeClassName: "bg-red-50 text-red-800 border-red-200" },
+  other:       { label: "Other",       color: "#475569", bg: "rgba(71,85,105,0.1)",    badgeClassName: "bg-slate-100 text-slate-700 border-slate-200" },
+};
+
+// ─── Events ───────────────────────────────────────────────────────────────────
+
+export const allEvents = [
+  {
+    _id: "ev1",
+    title: "HackThon 2026",
+    description:
+      "Sri Lanka's largest university hackathon. 48 hours of building, innovating, and shipping. Win from a prize pool of LKR 500,000.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=600&h=340&fit=crop&q=80",
+    },
+    category: "competition",
+    tags: ["hackathon", "coding", "prizes", "24h"],
+    organizer: "CS Faculty",
+    channel: "ch1",
+    channelName: "CS Faculty Official",
+    eventType: "physical",
+    venue: "Engineering Faculty Auditorium",
+    capacity: 200,
+    registrationCount: 156,
+    registrationDeadline: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: true,
+    isRegistered: true,
+    isSaved: false,
+    matchScore: 95,
+    matchReasons: ["Matches Competition interest", "Popular in your faculty"],
+  },
+  {
+    _id: "ev2",
+    title: "IEEE Tech Summit 2026",
+    description:
+      "Three days of keynotes, workshops, and networking with industry leaders and IEEE fellows. Topics: AI/ML, IoT, Robotics.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&h=340&fit=crop&q=80",
+    },
+    category: "technology",
+    tags: ["ieee", "ai", "iot", "robotics", "networking"],
+    organizer: "IEEE Student Branch UOC",
+    channel: "ch2",
+    channelName: "IEEE Student Branch",
+    eventType: "hybrid",
+    venue: "Auditorium Complex, Colombo 07",
+    onlineLink: "https://ieee-summit.uoc.lk",
+    capacity: 500,
+    registrationCount: 312,
+    registrationDeadline: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 12 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: true,
+    isRegistered: false,
+    isSaved: true,
+    matchScore: 92,
+    matchReasons: ["Matches Technology interest", "Trending this week"],
+  },
+  {
+    _id: "ev3",
+    title: "Career Fair 2026",
+    description:
+      "Meet 60+ top companies. On-the-spot interviews. Internship and full-time offers. Dress to impress.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=600&h=340&fit=crop&q=80",
+    },
+    category: "career",
+    tags: ["jobs", "internship", "networking", "industry"],
+    organizer: "Career Guidance Unit",
+    channel: "ch3",
+    channelName: "Career Services",
+    eventType: "physical",
+    venue: "Main Lawn, University of Colombo",
+    capacity: 2000,
+    registrationCount: 1400,
+    registrationDeadline: new Date(Date.now() + 1 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: true,
+    isSaved: false,
+    matchScore: 88,
+    matchReasons: ["Matches Career interest", "Deadline in 1 day"],
+  },
+  {
+    _id: "ev4",
+    title: "International Dance Festival",
+    description:
+      "Showcase your dance. 15 cultural groups competing. Live judges from SAARC countries. Food stalls, live music.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&h=340&fit=crop&q=80",
+    },
+    category: "cultural",
+    tags: ["dance", "culture", "performance", "festival"],
+    organizer: "Arts & Culture Society",
+    channel: "ch4",
+    channelName: "Arts & Culture Society",
+    eventType: "physical",
+    venue: "Reid Avenue Grounds",
+    capacity: 1000,
+    registrationCount: 234,
+    registrationDeadline: new Date(Date.now() + 8 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: false,
+    isSaved: false,
+    matchScore: 60,
+    matchReasons: ["Popular on campus"],
+  },
+  {
+    _id: "ev5",
+    title: "UI/UX Design Bootcamp",
+    description:
+      "Two-day immersive bootcamp with Figma. Learn design thinking, wireframing, prototyping. Industry-grade certificates.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=340&fit=crop&q=80",
+    },
+    category: "technology",
+    tags: ["figma", "design", "ux", "ui", "bootcamp"],
+    organizer: "UX Society",
+    channel: "ch2",
+    channelName: "IEEE Student Branch",
+    eventType: "physical",
+    venue: "IT Faculty Lab 3, Room 204",
+    capacity: 40,
+    registrationCount: 38,
+    registrationDeadline: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 8 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: false,
+    isSaved: true,
+    matchScore: 85,
+    matchReasons: ["Matches Technology interest", "Almost full — 2 spots left"],
+  },
+  {
+    _id: "ev6",
+    title: "Startup Weekend Colombo",
+    description:
+      "54 hours to go from idea to prototype. Form teams, build an MVP, pitch to investors. Real startup DNA.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=600&h=340&fit=crop&q=80",
+    },
+    category: "career",
+    tags: ["startup", "entrepreneurship", "pitch", "mvp"],
+    organizer: "Business & Entrepreneurship Club",
+    channel: "ch3",
+    channelName: "Career Services",
+    eventType: "physical",
+    venue: "Business Faculty Seminar Hall",
+    capacity: 80,
+    registrationCount: 61,
+    registrationDeadline: new Date(Date.now() + 4 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 9 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 11 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: false,
+    isSaved: false,
+    matchScore: 78,
+    matchReasons: ["Matches Career interest"],
+  },
+  {
+    _id: "ev7",
+    title: "Research Symposium 2026",
+    description:
+      "Annual undergraduate and postgraduate research presentations. Best paper awards. Keynote by Prof. Arjuna Herath.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?w=600&h=340&fit=crop&q=80",
+    },
+    category: "academic",
+    tags: ["research", "symposium", "papers", "academic"],
+    organizer: "Faculty of Graduate Studies",
+    channel: "ch5",
+    channelName: "Research & Innovation Hub",
+    eventType: "hybrid",
+    venue: "Senate Room, University of Colombo",
+    onlineLink: "https://research.uoc.lk/symposium",
+    capacity: 300,
+    registrationCount: 178,
+    registrationDeadline: new Date(Date.now() + 12 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 18 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 18 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: false,
+    isSaved: false,
+    matchScore: 55,
+    matchReasons: ["Trending this week"],
+  },
+  {
+    _id: "ev8",
+    title: "Inter-Faculty Cricket Championship",
+    description:
+      "All faculties compete. Day-night format. Live commentary. Food trucks and prizes for the champions.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=600&h=340&fit=crop&q=80",
+    },
+    category: "sports",
+    tags: ["cricket", "sports", "inter-faculty", "championship"],
+    organizer: "Sports Union",
+    channel: "ch4",
+    channelName: "Arts & Culture Society",
+    eventType: "physical",
+    venue: "University Grounds, Thurstan Road",
+    capacity: 5000,
+    registrationCount: 3201,
+    registrationDeadline: new Date(Date.now() + 15 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: false,
+    isSaved: true,
+    matchScore: 42,
+    matchReasons: ["Most popular this month"],
+  },
+  {
+    _id: "ev9",
+    title: "Competitive Programming Contest",
+    description:
+      "ICPC-style problem set. 5 hours, 12 problems. Top 3 qualify for the regional round. LeetCode-style judging.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=600&h=340&fit=crop&q=80",
+    },
+    category: "competition",
+    tags: ["icpc", "programming", "algorithms", "competitive"],
+    organizer: "CS Guild",
+    channel: "ch1",
+    channelName: "CS Faculty Official",
+    eventType: "physical",
+    venue: "CS Lab 1, Room 105",
+    capacity: 60,
+    registrationCount: 54,
+    registrationDeadline: new Date(Date.now() + 16 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 2 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: true,
+    isSaved: false,
+    matchScore: 90,
+    matchReasons: ["Matches Competition interest", "Deadline in 16 hours"],
+  },
+  {
+    _id: "ev10",
+    title: "Machine Learning Workshop",
+    description:
+      "Hands-on ML with Python, scikit-learn & TensorFlow. Build your first neural network. Datasets provided.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&h=340&fit=crop&q=80",
+    },
+    category: "technology",
+    tags: ["ml", "ai", "python", "tensorflow", "workshop"],
+    organizer: "AI & Data Science Society",
+    channel: "ch1",
+    channelName: "CS Faculty Official",
+    eventType: "physical",
+    venue: "IT Faculty Seminar Room B",
+    capacity: 50,
+    registrationCount: 47,
+    registrationDeadline: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 13 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 13 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: false,
+    isSaved: false,
+    matchScore: 87,
+    matchReasons: ["Matches Technology interest", "Almost full — 3 spots left"],
+  },
+  {
+    _id: "ev11",
+    title: "Photography Exhibition",
+    description:
+      "Annual photo exhibition by the UOC Photography Society. Theme: 'Urban Silence'. Prints, digital art, and live judging.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=600&h=340&fit=crop&q=80",
+    },
+    category: "cultural",
+    tags: ["photography", "art", "exhibition", "visual"],
+    organizer: "Photography Society",
+    channel: "ch4",
+    channelName: "Arts & Culture Society",
+    eventType: "physical",
+    venue: "Faculty of Arts, Gallery Room",
+    capacity: 200,
+    registrationCount: 44,
+    registrationDeadline: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 25 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 27 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: false,
+    isSaved: false,
+    matchScore: 48,
+    matchReasons: ["Popular on campus"],
+  },
+  {
+    _id: "ev12",
+    title: "Alumni Networking Night",
+    description:
+      "Connect with 200+ industry alumni. Speed networking, panel Q&A, and cocktail reception. Dress code: Business Casual.",
+    coverImage: {
+      url: "https://images.unsplash.com/photo-1511578314322-379afb476865?w=600&h=340&fit=crop&q=80",
+    },
+    category: "social",
+    tags: ["alumni", "networking", "social", "career"],
+    organizer: "Alumni Association",
+    channel: "ch3",
+    channelName: "Career Services",
+    eventType: "physical",
+    venue: "The Kingsbury Hotel, Colombo 01",
+    capacity: 250,
+    registrationCount: 189,
+    registrationDeadline: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+    startDate: new Date(Date.now() + 16 * 24 * 60 * 60 * 1000),
+    endDate: new Date(Date.now() + 16 * 24 * 60 * 60 * 1000),
+    status: "published",
+    isFeatured: false,
+    isRegistered: false,
+    isSaved: false,
+    matchScore: 72,
+    matchReasons: ["Matches Career interest"],
+  },
+];
+
+// ─── Derived collections ──────────────────────────────────────────────────────
+
+export const myRegistrations = allEvents.filter((e) => e.isRegistered);
+
+export const recommendedEvents = allEvents
+  .filter((e) => !e.isRegistered && e.matchScore >= 70)
+  .sort((a, b) => b.matchScore - a.matchScore)
+  .slice(0, 6);
+
+export const trendingEvents = [...allEvents]
+  .sort((a, b) => b.registrationCount - a.registrationCount)
+  .slice(0, 5);
+
+export const urgentDeadlines = allEvents
+  .filter((e) => !e.isRegistered && e.registrationDeadline > new Date())
+  .sort((a, b) => new Date(a.registrationDeadline) - new Date(b.registrationDeadline))
+  .slice(0, 4);
+
+// ─── Channels ─────────────────────────────────────────────────────────────────
+
+export const channels = [
+  {
+    _id: "ch1",
+    name: "CS Faculty Official",
+    description: "Official announcements from the Faculty of Computing & Information Systems",
+    category: "technology",
+    followerCount: 1243,
+    eventCount: 24,
+    recentEventCount: 3,
+    isFollowing: true,
+    avatar: null,
+    initials: "CS",
+    accentColor: "#38bdf8",
+  },
+  {
+    _id: "ch2",
+    name: "IEEE Student Branch",
+    description: "IEEE UOC — technology talks, workshops & industry connections",
+    category: "technology",
+    followerCount: 876,
+    eventCount: 18,
+    recentEventCount: 2,
+    isFollowing: true,
+    avatar: null,
+    initials: "IE",
+    accentColor: "#0d6b4a",
+  },
+  {
+    _id: "ch3",
+    name: "Career Services",
+    description: "Job fairs, resume workshops, internship postings & alumni events",
+    category: "career",
+    followerCount: 2104,
+    eventCount: 31,
+    recentEventCount: 1,
+    isFollowing: false,
+    avatar: null,
+    initials: "CS",
+    accentColor: "#fb923c",
+  },
+  {
+    _id: "ch4",
+    name: "Arts & Culture Society",
+    description: "Performances, festivals, art exhibitions & cultural events",
+    category: "cultural",
+    followerCount: 654,
+    eventCount: 15,
+    recentEventCount: 4,
+    isFollowing: true,
+    avatar: null,
+    initials: "AC",
+    accentColor: "#c084fc",
+  },
+  {
+    _id: "ch5",
+    name: "Research & Innovation Hub",
+    description: "Research symposiums, paper presentations & innovation challenges",
+    category: "academic",
+    followerCount: 432,
+    eventCount: 9,
+    recentEventCount: 1,
+    isFollowing: false,
+    avatar: null,
+    initials: "RI",
+    accentColor: "#60a5fa",
+  },
+];
+
+// ─── Notifications (preview) ──────────────────────────────────────────────────
+
+export const notifications = [
+  {
+    _id: "n1",
+    type: "registration_confirmed",
+    title: "Registration Confirmed",
+    body: 'You are registered for "HackThon 2026".',
+    isRead: false,
+    createdAt: new Date(Date.now() - 2 * 60 * 60 * 1000),
+    data: { eventId: "ev1", eventTitle: "HackThon 2026" },
+  },
+  {
+    _id: "n2",
+    type: "deadline_reminder",
+    title: "Registration Deadline Reminder",
+    body: '"Career Fair 2026" deadline is tomorrow.',
+    isRead: false,
+    createdAt: new Date(Date.now() - 5 * 60 * 60 * 1000),
+    data: { eventId: "ev3", eventTitle: "Career Fair 2026" },
+  },
+  {
+    _id: "n3",
+    type: "new_channel_event",
+    title: "New Event: Competitive Programming Contest",
+    body: "CS Faculty Official posted a new event.",
+    isRead: true,
+    createdAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
+    data: { eventId: "ev9", eventTitle: "Competitive Programming Contest" },
+  },
+  {
+    _id: "n4",
+    type: "event_updated",
+    title: "Event Updated",
+    body: '"IEEE Tech Summit 2026" details have been updated.',
+    isRead: true,
+    createdAt: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
+    data: { eventId: "ev2", eventTitle: "IEEE Tech Summit 2026" },
+  },
+];
+
+// ─── Featured event (for hero) ────────────────────────────────────────────────
+
+export const featuredEvent = allEvents.find((e) => e.isFeatured && !e.isRegistered) || allEvents[1];
