@@ -206,17 +206,6 @@ See **`server/.env.example`** for the full list. Important flags:
 
 ---
 
-## 🎨 Rebranding
-
-Display name and tagline live in:
-
-- `client/src/constants/branding.js`
-- `server/constants/branding.js`
-
-Change **`PLATFORM_NAME`** there to update UI copy and server-side email branding.
-
----
-
 ## 👩‍💻 Author
 
 **Gimhani Samanalee** — [GitHub @Gimhani03](https://github.com/Gimhani03)
